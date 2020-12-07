@@ -1,16 +1,14 @@
-import { Fragment } from "react";
-
 import client from "../src/apollo/client";
 import { GET_MENUS } from "../src/apollo/queries/getMenus";
+import Layout from "../src/components/layout";
 
-export default function Index({ menus }) {
-  console.warn({ menus });
-  return (
-    <Fragment>
-      <div>Home</div>
-    </Fragment>
-  );
-}
+const Index = ({ data }) => {
+  // console.log({ data });
+
+  return <Layout data={data}>content</Layout>;
+};
+
+export default Index;
 
 export const getStaticProps = async () => {
   const { data, loading, networkStatus } = await client.query({
@@ -19,9 +17,11 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      menus: {
-        headerMenus: data?.headerMenus?.edges,
-        footerMenus: data?.footerMenus?.edges,
+      data: {
+        menus: {
+          headerMenus: data?.headerMenus?.edges,
+          footerMenus: data?.footerMenus?.edges,
+        },
       },
     },
   };
