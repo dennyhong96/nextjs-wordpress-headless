@@ -24,5 +24,8 @@ export const getStaticProps = async () => {
         },
       },
     },
+
+    // Incremental static generation
+    revalidate: 1,
   };
 };
