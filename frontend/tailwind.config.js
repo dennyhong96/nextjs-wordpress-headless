@@ -6,7 +6,14 @@ module.exports = {
   },
   purge: ["./src/components/**/*.js", "./pages/**/*.js"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        teal: {
+          DEFAULT: "#14B8A6",
+          200: "#A7F3D0",
+        },
+      },
+    },
   },
   variants: {},
   plugins: [require("tailwindcss"), require("precss"), require("autoprefixer")],

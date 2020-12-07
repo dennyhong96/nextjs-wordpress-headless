@@ -1,7 +1,7 @@
 import { isEmpty } from "lodash";
 import Nav from "./nav";
 
-const Header = ({ headerMenus }) => {
+const Header = ({ headerMenus, header }) => {
   console.log(headerMenus);
   // If no menu, don't render anything
   if (isEmpty(headerMenus)) {
@@ -10,7 +10,7 @@ const Header = ({ headerMenus }) => {
 
   return (
     <header>
-      <Nav headerMenus={headerMenus} />
+      <Nav headerMenus={headerMenus} header={header} />
     </header>
   );
 };

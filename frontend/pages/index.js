@@ -18,9 +18,11 @@ export const getStaticProps = async () => {
   return {
     props: {
       data: {
+        header: data?.header ?? {},
+        footer: data?.footer ?? {},
         menus: {
-          headerMenus: data?.headerMenus?.edges,
-          footerMenus: data?.footerMenus?.edges,
+          headerMenus: data?.headerMenus?.edges ?? {},
+          footerMenus: data?.footerMenus?.edges ?? {},
         },
       },
     },

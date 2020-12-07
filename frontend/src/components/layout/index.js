@@ -1,3 +1,4 @@
+import Footer from "./footer";
 import Header from "./header";
 
 const Layout = ({ children, data }) => {
@@ -5,8 +6,9 @@ const Layout = ({ children, data }) => {
 
   return (
     <div>
-      <Header headerMenus={data?.menus?.headerMenus} />
+      <Header header={data?.header} headerMenus={data?.menus?.headerMenus} />
       {children}
+      <Footer footer={data?.footer} footerMenus={data?.menus?.footerMenus} />
     </div>
   );
 };

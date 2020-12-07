@@ -1,34 +1,34 @@
 import { isEmpty } from "lodash";
 import Link from "next/link";
+import { useState } from "react";
 
-const isMenuVisible = true;
-
-const Nav = ({ headerMenus }) => {
+const Nav = ({ headerMenus, header }) => {
   // If no menu, don't render anything
   if (isEmpty(headerMenus)) {
     return null;
   }
 
-  console.log({ headerMenus });
+  // Toggle mobile menu
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-green-300 p-6">
+    <nav className="flex items-center justify-between flex-wrap bg-teal p-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <img
-          src={`https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Nextjs-logo.svg/800px-Nextjs-logo.svg.png`}
-          alt=""
+          src={header?.siteLogoUrl}
+          alt={header?.siteTitle}
           width="48"
           height="48"
           className="mr-4"
         />
         <div className="flex flex-col items-start justify-start">
-          {/* <span className="font-semibold text-xl tracking-tight">{header?.siteTitle}</span> */}
-          {/* <span>{header?.siteTagLine}</span> */}
+          <span className="font-semibold text-xl tracking-tight">{header?.siteTitle}</span>
+          <span>{header?.siteTagLine}</span>
         </div>
       </div>
       <div className="block lg:hidden">
         <button
-          // onClick={() => setMenuVisibility(!isMenuVisible)}
+          onClick={() => setIsMenuVisible((prev) => !prev)}
           className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
         >
           <svg
@@ -50,7 +50,7 @@ const Nav = ({ headerMenus }) => {
           <div className="text-sm lg:flex-grow">
             {headerMenus?.map((menu) => (
               <Link key={menu?.node.id} href={menu?.node?.path}>
-                <a className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-green-100 mr-4">
+                <a className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200 mr-4">
                   {menu?.node?.label}
                 </a>
               </Link>
@@ -60,7 +60,7 @@ const Nav = ({ headerMenus }) => {
         <div>
           <a
             href="#"
-            className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-300 hover:bg-white mt-4 lg:mt-0"
+            className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 lg:mt-0"
           >
             Contact
           </a>
