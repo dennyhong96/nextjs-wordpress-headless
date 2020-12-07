@@ -4,6 +4,8 @@ services:
   composer:
     image: composer
     command: update
+
+    # Uses ./wordpress/composer.json to install wp plugins
     volumes:
       - ./wordpress:/app
 
