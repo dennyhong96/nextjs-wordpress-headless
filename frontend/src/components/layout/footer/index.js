@@ -1,6 +1,9 @@
+import Link from "next/link";
+
 import { isEmpty, isArray } from "lodash";
 import { sanitize } from "../../../utils/helpers";
-import Link from "next/link";
+import { getIconComponentBySlug } from "../../../utils/iconsMap";
+import { cloneElement } from "react";
 
 const Footer = ({ footer, footerMenus }) => {
   if (isEmpty(footerMenus) || !isArray(footerMenus)) {
@@ -39,11 +42,25 @@ const Footer = ({ footer, footerMenus }) => {
       <div class="my-8 flex flex-wrap -mx-1 overflow-hidden">
         {/* Copyright text */}
         <div class="my-1 px-1 w-full overflow-hidden sm:w-full xl:w-1/2">
-          <div className="text-white mt-8">{footer?.copyrightText ?? "Denny Hong | 2020"}</div>
+          <div className="text-white">{footer?.copyrightText ?? "Denny Hong | 2020"}</div>
         </div>
 
         {/* Social links */}
-        <div class="my-1 px-1 w-full overflow-hidden sm:w-full xl:w-1/2"></div>
+        <div class="my-1 px-1 w-full overflow-hidden sm:w-full xl:w-1/2">
+          {!isEmpty(footer?.socialLinks) && isArray(footer?.socialLinks) && (
+            <ul className="flex gap-2">
+              {footer.socialLinks.map((link) => (
+                <li key={link.iconName}>
+                  <a className="text-white w-4  " href={link.iconUrl}>
+                    {cloneElement(getIconComponentBySlug(link.iconName), {
+                      className: "w-6 text-white fill-current",
+                    })}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
     </footer>
   );
