@@ -10,8 +10,6 @@ const Footer = ({ footer, footerMenus }) => {
     return null;
   }
 
-  console.log({ footer });
-
   return (
     <footer className="bg-teal p-6">
       <div className="flex flex-wrap -mx-1 overflow-hidden text-white">
@@ -39,16 +37,16 @@ const Footer = ({ footer, footerMenus }) => {
         </div>
       </div>
 
-      <div class="my-8 flex flex-wrap -mx-1 overflow-hidden">
+      <div className="my-8 flex flex-wrap -mx-1 overflow-hidden">
         {/* Copyright text */}
-        <div class="my-1 px-1 w-full overflow-hidden sm:w-full xl:w-1/2">
+        <div className="my-1 px-1 w-full overflow-hidden sm:w-full xl:w-1/2">
           <div className="text-white">{footer?.copyrightText ?? "Denny Hong | 2020"}</div>
         </div>
 
         {/* Social links */}
-        <div class="my-1 px-1 w-full overflow-hidden sm:w-full xl:w-1/2">
+        <div className="my-1 px-1 w-full overflow-hidden sm:w-full xl:w-1/2">
           {!isEmpty(footer?.socialLinks) && isArray(footer?.socialLinks) && (
-            <ul className="flex gap-2">
+            <ul className="flex gap-4 justify-end">
               {footer.socialLinks.map((link) => (
                 <li key={link.iconName}>
                   <a className="text-white w-4  " href={link.iconUrl}>

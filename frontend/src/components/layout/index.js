@@ -5,8 +5,6 @@ import Footer from "./footer";
 import Header from "./header";
 
 const Layout = ({ children, data }) => {
-  console.log(data);
-
   return (
     <Fragment>
       {/* Display favicon dynamically */}

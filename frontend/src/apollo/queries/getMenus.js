@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 import MENU_FRAGMENT from "../fragments/menus";
 
-const headerFooter = `
+export const headerFooter = `
 headerMenus: menuItems(where: { location: HCMS_MENU_HEADER, parentId: "0" }) {
   edges {
     node {

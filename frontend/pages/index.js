@@ -3,7 +3,7 @@ import { GET_MENUS } from "../src/apollo/queries/getMenus";
 import Layout from "../src/components/layout";
 
 const Index = ({ data }) => {
-  // console.log({ data });
+  console.log({ data });
 
   return <Layout data={data}>content</Layout>;
 };
@@ -21,8 +21,8 @@ export const getStaticProps = async () => {
         header: data?.header ?? {},
         footer: data?.footer ?? {},
         menus: {
-          headerMenus: data?.headerMenus?.edges ?? {},
-          footerMenus: data?.footerMenus?.edges ?? {},
+          headerMenus: data?.headerMenus?.edges ?? [],
+          footerMenus: data?.footerMenus?.edges ?? [],
         },
       },
     },
