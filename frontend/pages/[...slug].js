@@ -55,10 +55,12 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       data: {
+        header: data?.header ?? {},
         menus: {
           headerMenus: data?.headerMenus?.edges ?? [],
           footerMenus: data?.footerMenus?.edges ?? [],
         },
+        footer: data?.footer ?? {},
         page: data?.page ?? {},
         path: params?.slug?.join("/"),
       },
